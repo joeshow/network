@@ -46,7 +46,6 @@
     // onSuccess Geolocation
     //
     function onSuccess(position) {
-    	
                       
       mapSetup(position.coords.latitude,position.coords.longitude);
         
@@ -58,8 +57,7 @@
 		zoom: 17,
 		center: firstLoc,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
-		
-	
+	};
 
 	var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 	
@@ -85,6 +83,10 @@
     
     
     
+    
+    
+    
+    
     </script>
   </head>
   <body onload="onDeviceReady()">
@@ -92,7 +94,7 @@
     <div data-role="page" id="page">
 
 	<div data-role="header" align="center" data-position="fixed">
-		
+	
 	</div><br>
 	<table border="0" cellspacing="0" cellpadding="0" align="CENTER">
 	<tr>
@@ -106,10 +108,10 @@
     <form NAME="stpw">
  <tr>
 	<td>
-    
+    <h4>Time&nbsp;:&nbsp;</h4>
     </td>
     <td>
-	
+	<div id="timer" class="logininput" align="center"><h1>00:00:00</h1></div>
     </td>
 </tr>
 <tr>
@@ -122,6 +124,5 @@
 </tr>
 </table>
 </div>
-	
-</body>
+  </body>
 </html>

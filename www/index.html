@@ -39,7 +39,7 @@
     
     function onDeviceReady() {
         // Throw an error if no update is received every 30 seconds
-        var options = { timeout: 30000 };
+        var options = { timeout: 60000 };
         watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
     }
 
@@ -100,13 +100,7 @@
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
-    
-    
-    
-    
-    
-    
-    
+
     </script>
   </head>
   <body onload="onDeviceReady()">
@@ -132,7 +126,7 @@
     </td>
     <td>
 	 <p id="geolocation"></p>
-	 <input type=button value="Refresh" onClick="showAlert(); return false;">
+	 <input type=button value="Refresh" onClick="javascript:location.reload();">
 	 <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
     </td>
 </tr>

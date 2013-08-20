@@ -57,6 +57,11 @@
 		zoom: 17,
 		center: firstLoc,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
+		
+	var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+                            'Longitude: ' + position.coords.longitude     + '<br />' +
+                            '<hr />'      + element.innerHTML;
 	};
 
 	var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
@@ -111,7 +116,7 @@
    
     </td>
     <td>
-	<div id="timer" class="logininput" align="center"><h1>00:00:00</h1></div>
+	 <p id="geolocation">Watching geolocation...</p>
     </td>
 </tr>
 <tr>

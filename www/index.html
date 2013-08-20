@@ -68,6 +68,10 @@
  	});
  
 	}
+	var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+                            'Longitude: ' + position.coords.longitude     + '<br />' +
+                            '<hr />'      + element.innerHTML;
 	
 	
     	}
@@ -79,10 +83,7 @@
     // Show a custom alertDismissed
     //
    	function showAlert() {
-        alert(var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                            'Longitude: ' + position.coords.longitude     + '<br />' +
-                            '<hr />'      + element.innerHTML;,  
+        alert('test',
             
             alertDismissed,         // callback
             'Game Over',            // title

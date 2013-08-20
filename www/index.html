@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Notification Example</title>
+    <title>Storage Example</title>
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
@@ -13,28 +13,13 @@
     // device APIs are available
     //
     function onDeviceReady() {
-        // Empty
-    }
-
-    // alert dialog dismissed
-        function alertDismissed() {
-            // do something
-        }
-
-    // Show a custom alertDismissed
-    //
-    function showAlert() {
-        navigator.notification.alert(
-            'You are the winner!',  // message
-            alertDismissed,         // callback
-            'Game Over',            // title
-            'Done'                  // buttonName
-        );
+        var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
     }
 
     </script>
   </head>
   <body>
-    <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
+    <h1>Example</h1>
+    <p>Open Database</p>
   </body>
 </html>

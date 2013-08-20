@@ -1,57 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Capture Audio</title>
+    <title>Device Properties Example</title>
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-    // Called when capture operation is finished
+    // Wait for device API libraries to load
     //
-    function captureSuccess(mediaFiles) {
-        var i, len;
-        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-            uploadFile(mediaFiles[i]);
-        }
-    }
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-    // Called if something bad happens.
+    // device APIs are available
     //
-    function captureError(error) {
-        var msg = 'An error occurred during capture: ' + error.code;
-        navigator.notification.alert(msg, null, 'Uh oh!');
-    }
-
-    // A button will call this function
-    //
-    function captureAudio() {
-        // Launch device audio recording application,
-        // allowing user to capture up to 2 audio clips
-        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 2});
-    }
-
-    // Upload files to server
-    function uploadFile(mediaFile) {
-        var ft = new FileTransfer(),
-            path = mediaFile.fullPath,
-            name = mediaFile.name;
-
-        ft.upload(path,
-            "http://my.domain.com/upload.php",
-            function(result) {
-                console.log('Upload success: ' + result.responseCode);
-                console.log(result.bytesSent + ' bytes sent');
-            },
-            function(error) {
-                console.log('Error uploading file ' + path + ': ' + error.code);
-            },
-            { fileName: name });
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Model: '    + device.model    + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
     }
 
     </script>
-    </head>
-    <body>
-        <button onclick="captureAudio();">Capture Audio</button> <br>
-    </body>
+  </head>
+  <body>
+    <p id="deviceProperties">Loading device properties...</p>
+  </body>
 </html>

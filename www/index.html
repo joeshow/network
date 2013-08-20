@@ -46,6 +46,11 @@
     // onSuccess Geolocation
     //
     function onSuccess(position) {
+    	var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+                            'Longitude: ' + position.coords.longitude     + '<br />' +
+                            '<hr />'      + element.innerHTML;
+	};
                       
       mapSetup(position.coords.latitude,position.coords.longitude);
         
@@ -58,11 +63,7 @@
 		center: firstLoc,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 		
-	var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                            'Longitude: ' + position.coords.longitude     + '<br />' +
-                            '<hr />'      + element.innerHTML;
-	};
+	
 
 	var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 	

@@ -57,13 +57,9 @@
 		zoom: 17,
 		center: firstLoc,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
-		
-	var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                            'Longitude: ' + position.coords.longitude     + '<br />' +
-                            '<hr />'      + element.innerHTML;
 	};
 
+	
 	var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 	
 	var marker = new google.maps.Marker({
@@ -72,6 +68,10 @@
  	});
  
 	}
+	var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+                            'Longitude: ' + position.coords.longitude     + '<br />' +
+                            '<hr />'      + element.innerHTML;
 	
     	}
     

@@ -86,64 +86,7 @@
     
     
     // ----------------------Time Set--------------------------------------------------
-  	var ms = 0;
-		var state = 0;
-
-		function startstop() {
-			if (state == 0) {
-			state = 1;
-			then = new Date();
-			then.setTime(then.getTime() - ms);
-			}   
-			else {
-			state = 0;
-			now = new Date();
-			ms = now.getTime() - then.getTime();
-
-			hours = Math.floor(ms%(1000 * 60 * 60 * 24)/(1000 * 60 * 60));
-			if (hours < 10)
-			hours = "0" + hours
-
-			minutes = Math.floor((ms%(1000 * 60 * 60))/(1000 * 60));
-			if (minutes < 10)
-			minutes = "0" + minutes
-
-			seconds = Math.floor((ms%(1000 * 60))/1000);
-			if (seconds < 10)
-			seconds = "0" + seconds
-    	
-			document.all('timer').innerHTML = '<h1>'+hours+':'+minutes+':'+seconds+'</h1>';
-   	   		}
-		}
-
-		function swreset() {
-			state = 0;
-			ms = 0;
-			document.all('timer').innerHTML = '<h1>00:00:00</h1>';
-		}
-
-		function display() {
-		setTimeout("display();", 500);
-		if (state == 1)  {
-		now = new Date();
-		ms = now.getTime() - then.getTime();
-		hours = Math.floor(ms%(1000 * 60 * 60 * 24)/(1000 * 60 * 60));
-		if (hours < 10)
-		hours = "0" + hours
-
-		minutes_divisor = ms%(1000 * 60 * 60);
-		minutes = Math.floor(minutes_divisor/(1000 * 60));
-		if (minutes < 10)
-		minutes = "0" + minutes
-
-		seconds_divisor = ms%(1000 * 60);
-		seconds = Math.floor(seconds_divisor/1000);
-		if (seconds < 10)
-		seconds = "0" + seconds
-
-		document.all('timer').innerHTML = '<h1>'+hours+':'+minutes+':'+seconds+'</h1>';
-   		}
-		}
+  
     
     </script>
   </head>
@@ -152,7 +95,7 @@
     <div data-role="page" id="page">
 
 	<div data-role="header" align="center" data-position="fixed">
-		<h1>RunforHealth</h1>
+		
 	</div><br>
 	<table border="0" cellspacing="0" cellpadding="0" align="CENTER">
 	<tr>
@@ -169,14 +112,13 @@
     <h4>Time&nbsp;:&nbsp;</h4>
     </td>
     <td>
-	<div id="timer" class="logininput" align="center"><h1>00:00:00</h1></div>
+	
     </td>
 </tr>
 <tr>
 	<td colspan="2">
 	<div onClick="display()" >
-	<input TYPE="BUTTON" Name="ssbutton" VALUE="Start/Stop" onClick="startstop()">
-	<input TYPE="BUTTON" NAME="reset" VALUE="End" onClick="swreset()">
+	
 	</div>
 	</form>
     	</td>

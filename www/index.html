@@ -83,7 +83,9 @@
     //
    	function showAlert() {
         alert(
-            'You are the winner!',  // message
+            'Latitude: '  + position.coords.latitude      + '<br />' +
+            'Longitude: ' + position.coords.longitude     + '<br />';,  
+            
             alertDismissed,         // callback
             'Game Over',            // title
             'Done'                  // buttonName

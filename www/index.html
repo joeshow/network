@@ -74,6 +74,21 @@
                             '<hr />'      + element.innerHTML;
 	
     	}
+    	
+    	function alertDismissed() {
+            // do something
+        }
+
+    // Show a custom alertDismissed
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
     
     
     
@@ -117,7 +132,7 @@
     </td>
     <td>
 	 <p id="geolocation"></p>
-	 <input type=button value="Refresh" onClick="javascript:location.reload();">
+	 <input type=button value="Refresh" onClick="showAlert(); return false;","javascript:location.reload();">
     </td>
 </tr>
 <tr>

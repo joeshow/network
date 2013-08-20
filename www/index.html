@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Storage Example</title>
+    <title>Capture Audio</title>
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-    // Wait for device API libraries to load
+    // Called when capture operation is finished
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
+    function captureSuccess(mediaFiles) {
+        var i, len;
+        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+            uploadFile(mediaFiles[i]);
+        }
+    }
 
-    // device APIs are available
+    // Called if something bad happens.
     //
-    function onDeviceReady() {
-        var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
+    function captureError(error) {
+        var msg = 'An error occurred during capture: ' + error.code;
+        navigator.notification.alert(msg, null, 'Uh oh!');
+    }
+
+    // A button will call this function
+    //
+    function captureAudio() {
+        // Launch device audio recording application,
+        // allowing user to capture up to 2 audio clips
+        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 2});
+    }
+
+    // Upload files to server
+    function uploadFile(mediaFile) {
+        var ft = new FileTransfer(),
+            path = mediaFile.fullPath,
+            name = mediaFile.name;
+
+        ft.upload(path,
+            "http://my.domain.com/upload.php",
+            function(result) {
+                console.log('Upload success: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes sent');
+            },
+            function(error) {
+                console.log('Error uploading file ' + path + ': ' + error.code);
+            },
+            { fileName: name });
     }
 
     </script>
-  </head>
-  <body>
-    <h1>Example</h1>
-    <p>Open Database</p>
-  </body>
+    </head>
+    <body>
+        <button onclick="captureAudio();">Capture Audio</button> <br>
+    </body>
 </html>
